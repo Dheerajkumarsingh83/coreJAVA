@@ -1,0 +1,55 @@
+Inner Class:
+------------
+An inner class in Java is a class defined inside another class. It can access the members of the outer class.
+
+Example:
+-------
+public class OuterClass {
+    private int x;
+
+    public class InnerClass {
+        public void display() {
+            System.out.println("Value of x: " + x);
+        }
+    }
+}
+Output: No specific output, as it is just a class definition
+-------
+
+Certainly! Here's an example of an inner class in Java:
+-------------------------------------------------------
+public class OuterClass {
+    private int x;
+
+    public void outerMethod() {
+        InnerClass innerObj = new InnerClass();
+        innerObj.innerMethod();
+    }
+
+    public class InnerClass {
+        public void innerMethod() {
+            x = 10; // Accessing the outer class member
+            System.out.println("Value of x in InnerClass: " + x);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass outerObj = new OuterClass();
+        outerObj.outerMethod();
+    }
+}
+In the above example, we have an outer class called OuterClass and an inner class called InnerClass. The InnerClass is defined 
+inside the OuterClass.
+
+In the outerMethod() of OuterClass, we create an instance of InnerClass and call the innerMethod() on it. Inside the innerMethod(),
+ we access the x member of the outer class and print its value.
+
+When we run the Main class, it creates an instance of OuterClass and calls the outerMethod(). As a result, the innerMethod() is 
+invoked and it prints the value of x which is 10.
+
+Output:
+-------
+Value of x in InnerClass: 10
+In this example, the inner class can access the private members of the outer class, including the private x variable.

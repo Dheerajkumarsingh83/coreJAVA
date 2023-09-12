@@ -1,0 +1,3 @@
+Final Class:
+--------------
+A final class in Java cannot be extended or subclassed. It is often used to prevent inheritance and provide a sealed implementation.

@@ -1,0 +1,47 @@
+1.What is an interface in Java?
+Ans:An interface in Java is a reference type that defines a contract of methods that a class must implement. It is a way to achieve
+abstraction and define common behavior that can be shared among multiple classes. Interfaces contain method signatures 
+(abstract methods) that define the contract, and classes that implement the interface provide the implementation for those methods.
+Interfaces allow for multiple inheritance-like behavior, where a class can implement multiple interfaces to inherit and provide 
+the functionality specified by those interfaces.
+
+2.Is it allowed to mark an interface method as static?
+Ans:Yes, starting from Java 8, it is allowed to mark an interface method as static. Prior to Java 8, interface methods were 
+implicitly abstract and could not have a method body. With the introduction of static methods in interfaces, we can now provide 
+default implementations for static methods. These static methods are accessed using the interface name and do not require an
+ instance of the implementing class.
+
+3.Why can't an interface be marked as final in Java?
+Ans:An interface cannot be marked as final in Java because it contradicts the purpose and concept of interfaces. The final keyword 
+indicates that a class or method cannot be overridden or modified. However, interfaces are meant to be implemented and extended by
+ other classes, allowing for polymorphism and multiple inheritance-like behavior. By marking an interface as final, it would prevent
+any class from implementing or extending it, thus defeating the purpose of interfaces.
+
+4.What is a marker interface?
+Ans:A marker interface, also known as a tagging interface, is an interface that does not declare any methods. Its sole purpose is 
+to mark or tag a class to indicate that it possesses a particular property or behavior. Marker interfaces provide a way to 
+categorize or identify classes at runtime. Examples of marker interfaces in Java include Serializable and Cloneable.
+
+5.What can we use instead of a marker interface?
+Ans:Instead of using a marker interface, we can use annotations in Java to mark classes and provide additional information. 
+Annotations can be applied to classes, methods, fields, and other program elements to convey metadata and instructions. By defining
+ custom annotations and applying them to classes, we can achieve similar functionality to marker interfaces. Annotations offer more
+ flexibility and extensibility, as they can also carry additional data or parameters.
+
+7.How are Annotations better than Marker Interfaces?
+Ans:Annotations are considered better than marker interfaces because they provide more flexibility, expressiveness, and extensibility.
+Annotations can carry additional data or parameters, allowing for richer metadata. They can be applied to specific program elements,
+whereas marker interfaces apply to the entire class. Annotations can be processed at compile-time or runtime using reflection,
+ enabling tools and frameworks to perform automated tasks based on the annotated information.
+
+8.What is the difference between an abstract class and an interface in Java?
+Ans:In Java, an abstract class can have both abstract and non-abstract methods, while an interface can only have abstract methods 
+(prior to Java 8). An abstract class can have instance variables and constructors, while an interface cannot. A class can extend 
+only one abstract class but can implement multiple interfaces. Abstract classes are meant to be extended using inheritance, while 
+interfaces are meant to be implemented by classes. Additionally, abstract classes provide a way to define default behavior, while 
+interfaces define contracts without any default implementation.
+
+9.Does Java allow us to use private and protected modifiers for variables in interfaces?
+Ans:No, Java does not allow the use of private or protected modifiers for variables declared in interfaces. In interfaces, variables
+ are implicitly public, static, and final. They are considered constants (static final variables) and should be used for defining 
+ constant values that can be accessed publicly by implementing classes.

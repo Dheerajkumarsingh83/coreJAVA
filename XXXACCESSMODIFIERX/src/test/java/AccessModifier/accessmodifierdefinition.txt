@@ -1,0 +1,52 @@
+1.what are access modifier in java
+Ans:Access Modifiers are like entry gates for other classes i.e. a class can control what information or data can be 
+accessible by other classes.
+                             Java provides a number of access modifiers to help you set the level of access you want 
+for classes as well as the fields, and constructors in your classes. A member has package or default accessibility 
+when no accessibility modifier is specified.
+
+Types of Access Modifiers
+---------------------------
+1. private
+2. protected
+3. default
+4. public
+
+The following table shows the access to members permitted by each modifier.
+-----------------------------------------------------------------------------
+ Java access modifiers:
+-------------------------
+Java provides various access modifiers for allowing the access levels for classes.
+private - visible within the same class
+default - visible to the same class and same package
+protected - visible to the same class, same package and subclass in another package.
+public - visible to the same class, same package, sub in another package and universe.
+
+                    Access Levels
+                    -------------
+    modifier  class  package  subclass  world
+    ------------------------------------------------
+  1.public     Y         Y       Y         Y  
+ 2.protected   Y         Y       Y         N 
+ 3.default     Y         Y       N         N 
+ 4.private     Y         N       N         N
+ --------------------------------------------------
+
+ 
+ 
+The first data column indicates whether the class itself has access to the member defined by the access level. As you can see,
+ a class always has access to its own members. The second column indicates whether classes in the same package as the class
+(regardless of their parentage) have access to the member. The third column indicates whether subclasses of the class 
+ declared outside this package have access to the member. The fourth column indicates whether all classes have access to 
+ the member.
+
+Tips on Choosing an Access Level:
+----------------------------------
+If other programmers use your class, you want to ensure that errors from misuse cannot happen. Access levels can help you do this.
+
+Use the most restrictive access level that makes sense for a particular member. Use private unless you have a good reason not to.
+Avoid public fields except for constants. (Many of the examples in the tutorial use public fields. This may help to illustrate 
+some points concisely, but is not recommended for production code.) Public fields tend to link you to a particular implementation
+ and limit your flexibility in changing your code.
+ 
+ 

@@ -1,0 +1,4 @@
+Definition and Usage
+---------------------
+The protected keyword is an access modifier used for attributes, methods and constructors, 
+making them accessible in the same package and subclasses

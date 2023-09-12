@@ -1,0 +1,4 @@
+Definition and Usage
+----------------------
+The private keyword is an access modifier used for attributes, methods and constructors, 
+making them only accessible within the declared class.

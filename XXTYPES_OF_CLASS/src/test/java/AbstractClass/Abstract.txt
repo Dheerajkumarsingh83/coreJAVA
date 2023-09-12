@@ -1,0 +1,98 @@
+Abstract Class:
+--------------------
+An abstract class in Java cannot be instantiated and is often used as a base class for other classes.
+ It can contain abstract methods and also regular methods.
+
+Example:
+--------
+public abstract class AbstractClass {
+    public abstract void display();
+
+    public void print() {
+        System.out.println("Abstract class print method.");
+    }
+}
+Output: No specific output, as it is just a class definition.
+------
+
+Certainly! Here's an example of an abstract class in Java:
+----------------------------------------------------------
+abstract class Shape {
+    private String color;
+    
+    // Constructor
+    public Shape(String color) {
+        this.color = color;
+    }
+    
+    // Abstract method
+    public abstract double calculateArea();
+    
+    // Concrete method
+    public void display() {
+        System.out.println("This shape is " + color + ".");
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+    
+    // Constructor
+    public Circle(String color, double radius) {
+        super(color);
+        this.radius = radius;
+    }
+    
+    // Implementing abstract method
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+    
+    // Constructor
+    public Rectangle(String color, double length, double width) {
+        super(color);
+        this.length = length;
+        this.width = width;
+    }
+    
+    // Implementing abstract method
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle("Red", 5.0);
+        circle.display();
+        System.out.println("Area: " + circle.calculateArea());
+        
+        Rectangle rectangle = new Rectangle("Blue", 3.0, 4.0);
+        rectangle.display();
+        System.out.println("Area: " + rectangle.calculateArea());
+    }
+}
+In this example, the Shape class is an abstract class that has a constructor, an abstract method calculateArea(), and a concrete 
+method display(). The calculateArea() method is declared as abstract, which means it does not have an implementation in the abstract 
+class. The display() method has a concrete implementation.
+
+The Circle and Rectangle classes are concrete subclasses of Shape. They extend the Shape class and provide implementations for the
+ calculateArea() method according to their specific shapes.
+
+In the Main class, we create objects of the Circle and Rectangle classes and call their respective methods. The output will display
+ the color of the shape and the calculated area.
+
+Output:
+--------
+This shape is Red.
+Area: 78.53981633974483
+This shape is Blue.
+Area: 12.0
+
+Note: Since the Shape class is abstract, it cannot be instantiated directly. However, we can create objects of its concrete subclasses
+ and access the abstract method calculateArea() through polymorphism.

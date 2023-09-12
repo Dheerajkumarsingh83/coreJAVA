@@ -1,0 +1,30 @@
+POJO Class:
+-------------
+A POJO (Plain Old Java Object) class is a simple Java class that encapsulates data and provides getter and setter methods. It does
+ not inherit from or implement any specific class or interface.
+
+Example:
+---------
+public class Person {
+    private String name;
+    private int age;
+
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+Output: No specific output, as it is just a class definition.
+--------

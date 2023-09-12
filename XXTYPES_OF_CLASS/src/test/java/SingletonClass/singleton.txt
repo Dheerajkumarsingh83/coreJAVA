@@ -1,0 +1,69 @@
+Singleton Class:
+-----------------
+A singleton class in Java is a class that allows only a single instance to be created and provides a global point of access to it.
+
+Example:
+---------
+public class SingletonClass {
+    private static SingletonClass instance;
+
+    private SingletonClass() {
+        // Private constructor to prevent instantiation
+    }
+
+    public static SingletonClass getInstance() {
+        if (instance == null) {
+            instance = new SingletonClass();
+        }
+        return instance;
+    }
+
+    public void display() {
+        System.out.println("This is a singleton class.");
+    }
+}
+Output: No specific output, as it is just a class definition.
+-------
+
+Certainly! Here's an example of a Singleton class in Java:
+----------------------------------------------------------
+public class SingletonClass {
+    private static SingletonClass instance;
+    
+    // Private constructor to prevent instantiation from outside the class
+    private SingletonClass() {
+    }
+    
+    // Public method to provide access to the single instance
+    public static SingletonClass getInstance() {
+        if (instance == null) {
+            instance = new SingletonClass();
+        }
+        return instance;
+    }
+    
+    // Other methods of the SingletonClass
+    public void display() {
+        System.out.println("This is a singleton class.");
+    }
+}
+In this example, the SingletonClass has a private constructor to prevent direct instantiation. The getInstance() method provides 
+access to the single instance of the class. It uses lazy initialization, creating the instance only if it is null. Otherwise, it 
+returns the existing instance.
+
+Here's how you can use the SingletonClass:
+-----------------------------------------
+public class Main {
+    public static void main(String[] args) {
+        // Get the instance of SingletonClass
+        SingletonClass singleton = SingletonClass.getInstance();
+        
+        // Call methods on the singleton object
+        singleton.display();
+    }
+}
+Output:
+-------
+This is a singleton class.
+The Singleton pattern ensures that there is only one instance of the class throughout the application and provides a global point
+ of access to that instance.

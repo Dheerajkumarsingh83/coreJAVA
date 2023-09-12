@@ -1,0 +1,33 @@
+Static Class  IN JAVA WITH PROGRAM EXAMPLE
+--------------------------------------------
+In Java, a static nested class is a class that is defined inside another class and marked with the static keyword. It is associated
+ with the outer class, rather than an instance of it. Here's an example of a static nested class in Java:
+
+public class OuterClass {
+    private static int outerStaticVar = 10;
+    private int outerInstanceVar = 20;
+
+    // Static nested class
+    public static class StaticNestedClass {
+        public void display() {
+            System.out.println("Outer static variable: " + outerStaticVar);
+            // Cannot access outerInstanceVar directly from static context
+        }
+    }
+
+    public static void main(String[] args) {
+        // Accessing static nested class
+        OuterClass.StaticNestedClass nestedObj = new OuterClass.StaticNestedClass();
+        nestedObj.display();
+    }
+}
+In this example, we have the OuterClass that contains a static nested class StaticNestedClass. The StaticNestedClass has access to 
+the static members of the outer class, such as outerStaticVar. However, it cannot access the non-static instance variables 
+(outerInstanceVar) directly since it is a static context.
+
+Inside the main method, we create an instance of the static nested class using the syntax OuterClass.StaticNestedClass, and then we
+ call the display method of the nested class. This will output:
+
+Outer static variable: 10
+Note that you can access the static nested class directly using its fully qualified name, even without creating an instance of the
+ outer class.

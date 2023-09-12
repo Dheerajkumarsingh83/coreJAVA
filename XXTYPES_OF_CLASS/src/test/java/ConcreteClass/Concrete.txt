@@ -1,0 +1,79 @@
+Concrete Class:
+----------------
+A concrete class in Java is a regular class that can be instantiated to create objects. It provides the implementation for abstract
+ methods inherited from its abstract or interface parents.
+
+Example:
+----------
+public class ConcreteClass extends AbstractClass {
+    @Override
+    public void display() {
+        System.out.println("Concrete class display method.");
+    }
+}
+Output: No specific output, as it is just a class definition
+-------
+
+Sure! Here's an example of a concrete class in Java:
+
+public class Rectangle {
+    private int width;
+    private int height;
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int calculateArea() {
+        return width * height;
+    }
+}
+In this example, the Rectangle class represents a geometric rectangle. It has two private fields, width and height, along with their
+ corresponding getters and setters. The class also includes a calculateArea() method that calculates and returns the area of the 
+ rectangle based on its width and height.
+
+You can create instances of the Rectangle class and interact with its methods like this:
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(5, 7);
+        System.out.println("Width: " + rectangle.getWidth());
+        System.out.println("Height: " + rectangle.getHeight());
+        System.out.println("Area: " + rectangle.calculateArea());
+
+        rectangle.setWidth(8);
+        rectangle.setHeight(10);
+        System.out.println("New Width: " + rectangle.getWidth());
+        System.out.println("New Height: " + rectangle.getHeight());
+        System.out.println("New Area: " + rectangle.calculateArea());
+    }
+}
+Output:
+----------
+Width: 5
+Height: 7
+Area: 35
+New Width: 8
+New Height: 10
+New Area: 80
+In the above program, we create an instance of the Rectangle class with width 5 and height 7. We then display its width, height, and 
+calculated area. Later, we update the width to 8 and height to 10 and display the updated values along with the new calculated area.
+
+This example demonstrates how to define and use a concrete class in Java to represent real-world entities or concepts.

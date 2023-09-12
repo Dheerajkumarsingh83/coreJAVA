@@ -1,0 +1,231 @@
+Abstract Class Interview Questions and Answers for best Practice
+-----------------------------------------------------------------
+Abstract Classes and Methods
+Data abstraction is the process of hiding certain details and showing only essential information to the user.
+Abstraction can be achieved with either abstract classes or interfaces (which you will learn more about in the next chapter).
+
+The abstract keyword is a non-access modifier, used for classes and methods:
+
+Abstract class: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class).
+
+Abstract method: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+An abstract class can have both abstract and regular methods:
+
+abstract class Animal {
+  public abstract void animalSound();
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+ 
+ 
+From the example above, it is not possible to create an object of the Animal class:
+
+Animal myObj = new Animal(); // will generate an error
+To access the abstract class, it must be inherited from another class. Let's convert the Animal class we used in the Polymorphism chapter to an abstract class:
+
+Remember from the Inheritance chapter that we use the extends keyword to inherit from a class.
+
+ExampleGet your own Java Server
+// Abstract class
+abstract class Animal {
+  // Abstract method (does not have a body)
+  public abstract void animalSound();
+  // Regular method
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+
+// Subclass (inherit from Animal)
+class Pig extends Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig(); // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+
+----------------------------------------------------------------------------------------------
+Why And When To Use Abstract Classes and Methods?
+To achieve security - hide certain details and only show the important details of an object.
+
+Note: Abstraction can also be achieved with Interfaces, 
+----------------------------------------------------------------------------------------------
+
+Java Interface
+Interfaces
+Another way to achieve abstraction in Java, is with interfaces.
+
+An interface is a completely "abstract class" that is used to group related methods with empty bodies:
+
+ExampleGet your own Java Server
+// interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void run(); // interface method (does not have a body)
+}
+ 
+To access the interface methods, the interface must be "implemented" (kinda like inherited) by another class with the implements keyword (instead of extends). The body of the interface method is provided by the "implement" class:
+
+Example
+// Interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void sleep(); // interface method (does not have a body)
+}
+
+// Pig "implements" the Animal interface
+class Pig implements Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println("The pig says: wee wee");
+  }
+  public void sleep() {
+    // The body of sleep() is provided here
+    System.out.println("Zzz");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig();  // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+ 
+ 
+
+Notes on Interfaces:
+Like abstract classes, interfaces cannot be used to create objects (in the example above, it is not possible to create an "Animal" object in the MyMainClass)
+Interface methods do not have a body - the body is provided by the "implement" class
+On implementation of an interface, you must override all of its methods
+Interface methods are by default abstract and public
+Interface attributes are by default public, static and final
+An interface cannot contain a constructor (as it cannot be used to create objects)
+Why And When To Use Interfaces?
+1) To achieve security - hide certain details and only show the important details of an object (interface).
+
+2) Java does not support "multiple inheritance" (a class can only inherit from one superclass). However, it can be achieved with interfaces, because the class can implement multiple interfaces. Note: To implement multiple interfaces, separate them with a comma (see example below
+
+Multiple Interfaces
+To implement multiple interfaces, separate them with a comma:
+
+Example
+-------
+interface FirstInterface {
+  public void myMethod(); // interface method
+}
+
+interface SecondInterface {
+  public void myOtherMethod(); // interface method
+}
+
+class DemoClass implements FirstInterface, SecondInterface {
+  public void myMethod() {
+    System.out.println("Some text..");
+  }
+  public void myOtherMethod() {
+    System.out.println("Some other text...");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    DemoClass myObj = new DemoClass();
+    myObj.myMethod();
+    myObj.myOtherMethod();
+  }
+  }
+
+1. What is Abstraction in Java?
+Ans: Abstraction in Java is a technique by which we can hide the data that is not required to users. It hides all unwanted data so
+ that users can work only with the required data.
+
+2. How to achieve or implement Abstraction in Java?
+Ans: There are two ways to implement abstraction in java. They are as follows:
+a) Abstract class (0 to 100%)
+b) Interface (100%)
+
+3. What is Abstract class in Java? How to define it?
+Ans: An abstract class in java is a class that is declared with an abstract keyword.
+Example of Abstract class:
+---------------------
+abstract class Test {
+abstract void show();
+}
+
+4. What is the difference between abstract class and concrete class?
+Ans: There are mainly two differences between an abstract class and concrete class. They are:
+a) We cannot create an object of abstract class. Only objects of its non-abstract (or concrete) sub classes can be created.
+b) It can have zero or more abstract methods that are not allowed in a non-abstract class (concrete class).
+
+5. What is Abstract in Java?
+Ans: Abstract is a non-access modifier in java that is applicable for classes, interfaces, methods, and inner classes.
+
+6. Can abstract modifier applicable for variables?
+Ans: No.
+
+7. What is Abstract method in Java?
+Ans: A method which is declared with abstract modifier and has no implementation (means no body) is called abstract method in java.
+It does not contain any body. It has simply a signature declaration followed by a semicolon. It has the following general form as 
+given below.
+Syntax: 
+--------
+       abstract type MethodName(arguments); // No body
+
+For example:
+---------
+      abstract void msg(); // No body.
+      
+8. Can an abstract method be declared as static?
+Ans: No.
+
+9. Can an abstract method be declared with private modifier?
+Ans: No, it cannot be private because the abstract method must be implemented in the child class. If we declare it as private, we 
+cannot implement it from outside the class.
+
+10. What is Concrete method in Java?
+Ans: A concrete method in Java is a method which has always the body. It is also called a complete method in java.
+
+11. When to use Abstract class in Java?
+Ans: An abstract class can be used when we need to share the same method to all non-abstract sub classes with their own specific 
+implementations.
+
+12. When to use Abstract method in Java?
+Ans: An abstract method can be used
+
+a) When the same method has to perform different tasks depending on the object calling it.
+b) When you need to be overridden in its non-abstract subclasses.
+
+13. Is abstract class a pure abstraction in Java?
+Ans: No, It provides 0 to 100% abstraction.
+
+14. Is it possible to create an object of abstract class in Java?
+Ans: No. It is not possible but we can create an object of its subclass.
+
+15. Is it possible that an abstract class can have without any abstract method?
+Ans: Yes.
+
+16. Can an abstract class have constructor?
+Ans: Yes.
+
+17. Is abstract class allow to define private, final, static, and concrete methods?
+Ans: Yes.
+
+18. Is it possible to achieve multiple inheritance through abstract class?
+Ans: No.
+
+19. Can we make an abstract class without abstract keyword?
+Ans: No, a class must be declared with abstract keyword to make an abstract class.
+
+20. Can we define an abstract method inside non-abstract class (concrete class)?
+Ans: No, we cannot define an abstract method in non-abstract class.

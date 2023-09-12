@@ -1,0 +1,21 @@
+Recursion is a programming technique where a method calls itself to solve a problem. It involves breaking down a complex problem
+ into smaller, more manageable subproblems. Here's an example of a recursive method to calculate the factorial of a number:
+
+public class Example {
+    public static void main(String[] args) {
+        int number = 5;
+        int factorial = calculateFactorial(number);
+        System.out.println("Factorial of " + number + " = " + factorial);
+    }
+    
+    public static int calculateFactorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+}
+Output:
+---------
+Factorial of 5 = 120

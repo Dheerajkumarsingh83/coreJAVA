@@ -1,0 +1,35 @@
+1.What is Abstraction in Object-Oriented Programming?
+Ans:Abstraction is a fundamental concept in object-oriented programming that focuses on representing essential features
+ and behaviors while hiding unnecessary details. It allows you to create abstract classes, interfaces, and methods 
+ to define common behavior and characteristics without providing specific implementation details. Abstraction helps
+  in designing modular, maintainable, and extensible code by separating the "what" (interface) from the "how" (implementation).
+
+2.How is Abstraction different from Encapsulation?
+Ans:Abstraction and encapsulation are closely related concepts but serve different purposes. Abstraction focuses on defining 
+the interface and hiding implementation details, while encapsulation focuses on bundling data and methods into a single unit (class)
+ and controlling access to them. Encapsulation helps in achieving data hiding, access control, and maintaining the integrity of 
+ the object's state, whereas abstraction helps in designing reusable and loosely coupled code by defining contracts and separating
+  concerns.
+
+3.What is an abstract class in Java?
+Ans:An abstract class in Java is a class that cannot be instantiated and is typically used as a base class for other classes.
+ It serves as a blueprint for its subclasses, providing common properties and behaviors. An abstract class can contain both 
+ abstract and non-abstract methods. Abstract methods are declared without an implementation and must be implemented by the concrete
+ subclasses. However, non-abstract methods can have an implementation in the abstract class itself.
+
+4.Is it allowed to mark a method abstract without marking the class abstract?
+Ans:No, it is not allowed to mark a method as abstract without marking the class itself as abstract. Abstract methods are meant
+ to be implemented by the subclasses, and therefore, the class containing abstract methods must be declared as abstract. Marking 
+ a class abstract allows it to have abstract methods, but it cannot be instantiated directly.
+
+5.Is it allowed to mark a method abstract as well as final?
+Ans:No, it is not allowed to mark a method as both abstract and final. The abstract keyword indicates that the method is meant to be 
+overridden in the subclass, while the final keyword indicates that the method cannot be overridden in any subclass. These two
+ keywords have conflicting purposes, and using them together is not allowed.
+
+6.Can we instantiate an abstract class in Java?
+Ans:No, we cannot directly instantiate an abstract class in Java. Abstract classes are incomplete and serve as a blueprint for 
+the concrete subclasses. They can contain abstract methods without implementation, and therefore, they cannot be instantiated.
+ To use the features of an abstract class, you need to create a concrete subclass that extends the abstract class and provides 
+implementations for the abstract methods.
+

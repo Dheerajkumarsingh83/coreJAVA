@@ -1,0 +1,27 @@
+default	
+----------
+1.The class is only accessible by classes in the same package. This is used when you don't specify a modifier. 
+You will learn more about packages in the Packages chapter
+e.g;
+class MyClass {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+----------------------------------------------------------------------------------------------------------------
+2.The code is only accessible in the same package. This is used when you don't specify a modifier. You will learn 
+more about packages in the Packages chapter.
+e.g;
+class Person {
+  String fname = "John";
+  String lname = "Doe";
+  String email = "john@doe.com";
+  int age = 24;
+  
+  public static void main(String[] args) {
+    Person myObj = new Person();
+    System.out.println("Name: " + myObj.fname + " " + myObj.lname);
+    System.out.println("Email: " + myObj.email);
+    System.out.println("Age: " + myObj.age);
+  }
+}
