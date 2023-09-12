@@ -1,0 +1,111 @@
+Method Overriding In Java
+================================================================================================
+If a subclass provides a method with the same signature (name and parameter) as in its super class, then subclass
+ overrides the method of its super class. This process of overriding a super class method by subclass is known 
+ as method overriding.
+ 
+ Conditions for method overriding:
+ ================================================================================================
+1)Method in subclass must have same signature as in its super class.
+2)Two classes must follow IS-A relationship.
+=============================================================================================================
+Example:
+/**
+ * This program is used for simple method overriding example.
+ * @author W3spoint
+ */
+class Student {
+      /**
+       * This method is used to show details of a student.
+       * @author W3spoint
+       */
+      public void show(){
+            System.out.println("Student details.");
+      }
+}
+ 
+public class CollegeStudent extends Student {
+      /**
+       * This method is used to show details of a college student.
+       * @author W3spoint
+       */
+      public void show(){
+            System.out.println("College Student details.");
+      }
+ 
+      //main method
+      public static void main(String args[]){
+       CollegeStudent obj = new CollegeStudent();
+       //subclass overrides super class method
+       //hence method of CollegeStudent class will be called.
+       obj.show();
+      }
+}
+Output:
+=================================================================
+College Student details.
+Download this example.
+
+Can static method be overridden?
+No, Static methods can’t be overridden because they are associated with class not with the object.
+
+Role of access modifiers in method overriding:
+---------------------------------------------------------------------------------------
+Access modifier of overridden method in subclass can’t be more restrictive than in super class. Otherwise it will
+ throw an exception.
+============================================================================================================
+Example:
+/**
+ * This program is used for simple method overriding example.
+ * @author W3spoint
+ */
+class Student {
+      /**
+       * This method is used to show details of a student.
+       * @author W3spoint
+       */
+      public void show(){
+            System.out.println("Student details.");
+      }
+}
+ 
+public class CollegeStudant extends Student {
+      /**
+       * This method is used to show details of a college student.
+       * @author W3spoint
+       */
+      protected void show(){//compile-time error
+            System.out.println("College Student details.");
+      }
+ 
+      //main method
+      public static void main(String args[]){
+       CollegeStudant obj = new CollegeStudant();
+       //subclass overrides super class method
+       //hence method of CollegeStudant class will be called.
+       obj.show();
+      }
+}
+Output:
+========================================
+Exception in thread "main" java.lang.Error: 
+Unresolved compilation problem:
+Cannot reduce the visibility of the inherited method from Student
+at com.w3spoint.business.CollegeStudent.show(CollegeStudent.java:22)
+at com.w3spoint.business.CollegeStudent.main(CollegeStudent.java:30)
+Download this example.
+ 
+
+Interview Questions on Method Overloading and Method Overriding
+==========================================================================
+1.What is method overloading in java?
+2.Can we declare an overloaded method as static and another one as non-static?
+3.Can overloaded methods be synchronized?
+4.Synchronized override method
+5.Can we declare overloaded methods as final?
+6.Can overloaded method be overridden?
+7.What is method overriding in java?
+8.Can static method be overridden?
+9.Difference between method overloading and overriding in java?
+10.Can we override private methods in java?
+Is it possible to override non static method as static method?
