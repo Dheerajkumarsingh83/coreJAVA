@@ -1,0 +1,3 @@
+Single inheritance
+==================================================================
+Single inheritance refers to the inheritance relationship where a class extends only one superclass.

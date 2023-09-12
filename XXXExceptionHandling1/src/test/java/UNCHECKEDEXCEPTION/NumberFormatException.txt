@@ -1,0 +1,74 @@
+                    How to handle the NumberFormatException (unchecked) in Java?
+                    ============================================================
+                    
+1.How to handle the NumberFormatException (unchecked) in Java?
+=============================================================
+Ans:The NumberFormatException is an unchecked exception thrown by parseXXX() methods when they are unable to 
+format (convert) a string into a number.
+
+The NumberFormatException can be thrown by many methods/constructors in the classes of java.lang package.
+ Following are some of them.
+========================================================================================================
+1.public static int parseInt(String s) throws NumberFormatException
+2.public static Byte valueOf(String s) throws NumberFormatException
+3.public static byte parseByte(String s) throws NumberFormatException
+4.public static byte parseByte(String s, int radix) throws NumberFormatException
+5.public Integer(String s) throws NumberFormatException
+6.public Byte(String s) throws NumberFormatException
+
+=======================================================================================================
+There are situations defined for each method, where it can throw a NumberFormatException. For instance, public 
+static int parseInt(String s) throws NumberFormatException when
+----------------------------------------------------------------------------------------------------
+1.String s is null or length of s is zero.
+2.If the String s contains non-numeric characters.
+3.Value of String s doesn’t represent an Integer.
+
+Example1
+===================================================================================================
+Live Demo
+
+public class NumberFormatExceptionTest {
+   public static void main(String[] args){
+      int x = Integer.parseInt("30k");
+      System.out.println(x);
+   }
+}
+==============================================================================================================
+Output
+Exception in thread "main" java.lang.NumberFormatException: For input string: "30k"
+       at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+       at java.lang.Integer.parseInt(Integer.java:580)
+       at java.lang.Integer.parseInt(Integer.java:615)
+       at NumberFormatExceptionTest.main(NumberFormatExceptionTest.java:3)
+ ===================================================================================================================
+ 
+How to handle NumberFormatException
+===================================================================================================================
+We can handle the NumberFormatException in two ways
+
+1)Use try and catch block surrounding the code that can cause NumberFormatException.
+2)Another way of handling the exception is the use of throws keyword.
+===================================================================================================================
+Example2
+Live Demo
+
+public class NumberFormatExceptionHandlingTest {
+   public static void main(String[] args) {
+      try {
+         new NumberFormatExceptionHandlingTest().intParsingMethod();
+      } catch (NumberFormatException e) {
+         System.out.println("We can catch the NumberFormatException");
+      }
+   }
+   public void intParsingMethod() throws NumberFormatException{
+      int x = Integer.parseInt("30k");
+      System.out.println(x);
+   }
+}
+In the above example, the method intParsingMethod() throws the exception object that is thrown
+ by Integer.parseInt(“30k”) to its calling method, which is the main() method in this case.
+===================================================================================================================
+Output:
+We can catch the NumberFormatException
+==================================================================================================================

@@ -1,0 +1,72 @@
+Java Scanner ioException() Method
+===============================================
+The ioException() is a method of Java Scanner class which is used to get the IOException last thrown by this
+ Scanner's readable. It returns null if no such exception exists..
+
+Syntax
+----------------
+Following is the declaration of ioException() method:
+
+Parameter
+-------------------------
+This method does not accept any parameter.
+
+Returns
+---------------------
+The ioException() method returns the last exception thrown by this scanner's readable.
+
+Exceptions
+-------------
+NA
+
+Compatibility Version
+---------------------------
+Java 1.5 and above
+====================================================================================================
+Example 1
+import java.util.*;  
+public class ScannerIOExceptionExample1 {    
+    public static void main(String[] args) {  
+        //Create a new scanner with the specified String Object  
+          Scanner scan = new Scanner("Hello World! Hello JavaTpoint.");  
+          //Print the line  
+          System.out.println("" + scan.nextLine());  
+          //Check if there is an IO exception  
+          System.out.println("Exception Output: " + scan.ioException());  
+          scan.close();   
+    }  
+}  
+=======================================================================================================
+Output:
+
+Hello World! Hello JavaTpoint.
+Exception Output: null
+=======================================================================================================
+Example 2
+import java.util.*;  
+import java.util.regex.Pattern;  
+public class ScannerIOExceptionExample2 {    
+    public static void main(String args[]){       
+              //Create Scanner object  
+            Scanner scan = new Scanner("Names:Raju1;Pawan;Suresh");  
+            //Declare the delimiter  
+            scan.useDelimiter(";");  
+            /*Initialize the String pattern which signifies that the String 
+            token contains characters of the alphabet only*/  
+            Pattern pattern = Pattern.compile("[A-Za-z]*");  
+            while(scan.hasNext()){  
+                if(scan.hasNext(pattern)){  
+                    System.out.println(scan.nextLine());  
+                    //Check if there is an IO exception  
+                      System.out.println("Exception Output: " + scan.ioException());  
+                }  
+                else  
+                    scan.next();  
+                }  
+                scan.close();  
+        }    
+}  
+Output:
+========================================================================================================
+;Pawan;Suresh
+Exception Output: null

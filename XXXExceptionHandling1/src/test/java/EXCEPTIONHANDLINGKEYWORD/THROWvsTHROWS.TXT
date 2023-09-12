@@ -1,0 +1,27 @@
+Definition and Usage
+===============================
+THROW
+------
+Java throw keyword
+The throw keyword is used to explicitly throw a single exception.
+
+When an exception is thrown, the flow of program execution transfers from the try block to the catch block. We 
+use the throw keyword within a method.
+=====================================================================================================
+THROWS
+---------
+The throws keyword indicates what exception type may be thrown by a method.
+
+There are many exception types available in Java: ArithmeticException, ClassNotFoundException, 
+ArrayIndexOutOfBoundsException, SecurityException, etc.
+
+Differences between throw and throws:
+================================================================================================================
+throw	                                                      |                              throws
+================================================================================================================
+1.Used to throw an exception for a method Used to indicate    | 1. what exception type may be thrown by a method
+2.Cannot throw multiple exceptions	                          | 2. Can declare multiple exceptions
+Syntax:                                                       | Syntax:
+throw is followed by an object (new type)                     | throws is followed by a class
+used inside the method                                        | and used with the method signature
+==================================================================================================================

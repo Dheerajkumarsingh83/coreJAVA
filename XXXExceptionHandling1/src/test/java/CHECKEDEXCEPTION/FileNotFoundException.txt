@@ -1,0 +1,74 @@
+How to Fix the FileNotFoundException in Java.io
+===================================================
+The java.io.FileNotFoundException is a checked exception in Java that occurs when an attempt to open a file 
+denoted by a specified pathname fails. This exception is thrown by the FileInputStream, FileOutputStream, and
+ RandomAccessFile constructors when a file with the specified pathname either does not exist or is inaccessible.
+
+Since FileNotFoundException is a checked exception, it must be explicitly handled in methods which can throw 
+this exception - either by using a try-catch block or by throwing it using the throws clause.
+
+ 
+
+What Causes FileNotFoundException
+=======================================
+There are two main scenarios when the FileNotFoundException occurs:
+
+1.If a file with the specified pathname does not exist.
+2.If a file with the specified pathname is inaccessible, for example, if the file is read-only and is attempted to 
+be opened for writing.
+ 
+
+FileNotFoundException Example
+=========================================================
+Here's an example of a FileNotFoundException thrown when trying to access a file that does not exist in the system:
+=========================================================================
+public class FileNotFoundExceptionExample {
+    public static void main(String args[]) {
+        BufferedReader br = null;
+
+        try {
+            br = new BufferedReader(new FileReader("myfile.txt"));
+            String data = null;
+
+            while ((data = br.readLine()) != null) {
+                System.out.println(data);
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+    }
+}
+In the above example, a file with the name myfile.txt is attempted to be accessed. However, since no such file 
+exists in the system, a FileNotFoundException is thrown:
+==================================================================================================
+java.io.FileNotFoundException: myfile.txt (No such file or directory)
+    at java.base/java.io.FileInputStream.open0(Native Method)
+    at java.base/java.io.FileInputStream.open(FileInputStream.java:212)
+    at java.base/java.io.FileInputStream.<init>(FileInputStream.java:154)
+    at java.base/java.io.FileInputStream.<init>(FileInputStream.java:109)
+    at java.base/java.io.FileReader.<init>(FileReader.java:60)
+    at FileNotFoundExceptionExample.main(FileNotFoundExceptionExample.java:10)
+ =====================================================================================================
+
+How to Fix FileNotFoundException
+=====================================
+Since FileNotFoundException is a checked exception, a try-catch block should be used to handle it. The try block 
+should contain the lines of code that can throw the exception and the catch block should catch and handle 
+the exception appropriately.
+
+Some ways to fix the exception are:
+================================================
+1.If the message of the exception indicates that no such file or directory exists, the file pathname should be 
+checked again to ensure it is correct and if the file exists at the specified location.
+2.If the message indicates that access is denied, the permissions of the file should be verified and whether 
+the file is in use by another program.
+3.If the message indicates that the specified file is a directory, the name of the file should be changed or
+ the existing directory should be deleted if not in use.

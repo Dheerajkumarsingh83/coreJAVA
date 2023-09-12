@@ -1,0 +1,218 @@
+Arithmetic Exception in Java
+------------------------------------------------------------------------------------------
+Overview
+--------
+Exception handling is a mechanism in java to handle unwanted interruptions like exceptions and continue with the 
+normal flow of the program. Java uses try-catch blocks and other keywords like finally, throw, and throws to
+ handle exceptions.
+
+Arithmetic exceptions are raised by JVM when we try to perform any arithmetic operation which is not possible in
+mathematics. One of the most common arithmetic exceptions that occur is when we divide any number with zero.
+
+Scope of Article
+--------------------
+1.This article explains arithmetic exception in java along with its hierarchy in exception class.
+2.Constructors of the ArithmeticException Class are explained.
+3.Conditions that throw ArithmeticException and how to handle them are explained using Java programming language.
+
+1)What is an Arithmetic Exception in Java?
+-----------------------------------------------
+An arithmetic exception in java is a Runtime exception present in the java.lang package. JVM throws Arithmetic
+ Exception when a wrong mathematical expression occurs in a java program. The base class of java arithmetic 
+ exception is java.lang.ArithmeticException which comes under java.lang.RuntimeException.
+
+Exception Hierarchy
+-----------------------------------------------figure(photo)
+JVM throws Arithmetic exceptions in the following two scenarios:
+---------------------------------------------------------------------------
+Division of a Number by an integer 0 - An arithmetic exception in java is thrown when we try to divide any number by 0.
+Example: 198/0
+
+Division of Non-terminating long decimal numbers by Big Decimal - An arithmetic exception in java is thrown when we try to divide a big decimal number by any big decimal number.
+Example: 75.908976756456/2.987865675
+
+Structure of ArithmeticException in Java
+--------------------------------------------------------------
+ArithmeticExeption in java is present in java.lang package. Let's see the hierarchy of this exception in Java.
+Aritmetic Exception Hierarchy
+
+Arithmetic Exception Constructor
+--------------------------------------------------------------
+Constructors in java is a special method with the name same as the class name. The arithmetic Exception class 
+has two constructors used to throw exceptions according to the requirements. There are two types of Constructors
+ in ArithmeticException Class in Java.
+
+1. ArithmeticException(): Defines an ArithmeticException with no parameter passed or without any detailed message.
+2. ArithmeticException(String s): Defines an ArithmeticException with one parameter passed. The parameter
+ String s is the detailed message which explains why the ArithmeticException occurred.
+
+2)When an Arithmetic Exception Occurs in Java?
+-------------------------------------------------------
+Ans:Arithmetic exception in Java occurs in two cases:
+
+1. Division by 0 JVM throws an arithmetic exception when any number is divided by 0. This exception is thrown as
+ a / by zero exception. Let's see the same using an example.
+-----------------------------------------------------------------------------------------------
+public class ArithmeticExceptionDemo
+{  
+    void division(int a, int b)  
+    {  
+        // Method for division
+        int result = a / b;  
+        System.out.println("Division successfull.");  
+        System.out.println("Result: " + result);  
+    }  
+  
+    // main method  
+    public static void main(String argvs[])  
+    {  
+        // creating an object of the class ArithmeticException  
+        ArithmeticExceptionDemo obj1 = new ArithmeticExceptionDemo(); 
+        obj1.division(180,0);  
+    }  
+}  
+
+Output:
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at ArithmeticExceptionDemo.division(ArithmeticExceptionDemo.java:6)
+	at ArithmeticExceptionDemo.main(ArithmeticExceptionDemo.java:16)
+
+In this example, division method is defined to perform division. The object of class ArithmeticExceptionDemo 
+is created and the method is called using the same object. Here the parameters passed to the division method 
+are 180 and 0. Here we are trying to perform division 180/0 which is not possible mathematically hence the JVM 
+throws the ArithmeticException.
+-----------------------------------------------------------------------------------------------------------
+2. Division of Non-Terminating Big Decimal JVM throws an arithmetic exception when a big-decimal i.e non 
+terminating decimal number is divided by another big-decimal number. This exception is thrown as a 
+Non-terminating decimal expansion; no exact representable decimal result. exception. Let's see the same 
+using an example.
+----------------------------------------------------------------------------------------------------
+import java.math.BigDecimal;  
+  
+public class ArithmeticExceptionDemo2  
+{  
+    // main method  
+    public static void main(String[] argvs)  
+    {  
+        // creating two objects of BigDecimal  
+        BigDecimal a1 = new BigDecimal(25);  
+        BigDecimal a2 = new BigDecimal(7);  
+
+        // 25 / 7 = 3.571428571428... 
+        a1 = a1.divide(a2);  
+        System.out.println(a1.toString());  
+    }  
+}  
+
+Output:
+
+Exception in thread "main" java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:1766)
+	at ArithmeticExceptionDemo2.main(ArithmeticExceptionDemo2.java:13)
+
+In this example, two big decimal numbers a1,a2 are declared. Here we are trying to divide a1 by a2 and store the result in a1. But the division of big decimal numbers results in a non-terminating decimal number. It is not possible to display the result hence JVM throws the ArithmeticException as displayed in the output section.
+--------------------------------------------------------------------------------------------------------------
+
+3)How to Handle Arithmetic Exceptions in Java?
+Ans:In java customized exception handling is achieved using five keywords: try, catch, throw, throws, and finally. Here is how these keywords work in short.
+
+1.Try block contains the program statements that may raise an exception.
+2.Catch block catches the raised exception and handles it.
+3.Throw keyword is used to explicitly throw an exception.
+4.Throws keyword is used to declare an exception.
+5.Finally block contains statements that must be executed after the try block.
+--------------------------------------------------------------------------------------------------
+Syntax:
+-------------------------------------------------------------------------------------------------
+try
+{
+    //Doubtful Statements
+}
+catch(Exception e)
+{
+    //Handle Exceptions
+}
+finally
+{
+    //Close resources
+}
+
+We can handle arithmetic exceptions in java in the try-catch block. Try block will contain doubtful statements
+ that can throw arithmetic exceptions while catch block is used to handle the exception and display an 
+ appropriate message.
+
+Let's see how to handle arithmetic exceptions in java using examples in the next exception.
+---------------------------------------------------------------------------------------
+Arithmetic Exception in Java Examples
+----------------------------------------------------------------------------------------
+Example 1: In this example, we will see how to handle ArithmeticException thrown by 0 division error using
+ try-catch block in java.
+ 
+public class ArithmeticExceptionExample{  
+  public static void main(String args[]){  
+   try{  
+      //code that may raise exception  
+      int result=800/0;  
+   }
+   catch(ArithmeticException e)
+   {
+       System.out.println(e);
+   }  
+   //rest code of the program   
+   System.out.println("Program execution continues....");  
+  }  
+} 
+--------------------------------------------------------------------------------------------------------------
+Output:
+----------------------------------------------------------------------------------------------------------------
+java.lang.ArithmeticException: / by zero
+Program execution continues....
+
+In this example, the division of two bigdecimal numbers is performed in the try block, and the ArithmeticException
+ thrown due to this is handled in the catch block. The catch block displays the exception thrown as the output 
+ and the flow of the program continues after it.
+------------------------------------------------------------------------------------------------------------------
+
+Example 2: In this example, we will see how to handle ArithmeticException thrown by a Non-terminating big decimal 
+division error using the try-catch block in java.
+-----------------------------------------------------
+import java.math.BigDecimal;  
+
+public class ArithmeticExceptionExample2{  
+  public static void main(String args[])
+  { 
+      BigDecimal num1 = new BigDecimal(198);  
+      BigDecimal num2 = new BigDecimal(13);
+      BigDecimal result = new BigDecimal(0);
+       try
+       {  
+          //code that may raise exception  
+          result = num1.divide(num2);
+       }
+       catch(ArithmeticException e)
+       {
+           System.out.println(e);
+       }  
+       //rest code of the program   
+       System.out.println("Program execution continues....");  
+  }  
+} 
+---------------------------------------------------------------------------------------------
+Output:
+---------------------------------------------------------------------------------------------------
+java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+Program execution continues....
+
+In this example, division of two bigdecimal numbers is performed in try block and the ArithmeticException thrown
+ due to this is handled in catch block. The catch block displays the execption thrown as the output and the flow
+  of program continues after it.
+------------------------------------------------------------------------------------------------------------
+
+Conclusion
+---------------------
+1.JVM throws ArithmeticException when we try to perform any operation that is not possible mathematically.
+2.ArithmeticException is present in java.lang package and extends java.lang.RuntimeException class in java.
+3.ArithmeticException occurs in two cases: Division of any number by 0 and Divison of non-terminating big-decimal
+ number.
+4.Try-catch block is used to handle arithmetic exceptions in java.

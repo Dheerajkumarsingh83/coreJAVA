@@ -1,0 +1,210 @@
+Unchecked Exception In Java
+-----------------------------
+Q)What is an Unchecked Exception in Java ?
+ANS:It occurs at the time of execution and is known as a run time exception. It includes bugs, improper usage
+ f API, and syntax or logical error in programming.
+
+In Java, exceptions that are under Error and , Runtime exception classes are unchecked exceptions.
+
+Types of Unchecked Exceptions
+------------------------------
+1.ArithmeticException
+2.NullPointerException
+3.ArrayIndexOutOfBoundsException
+4.NumberFormatException
+5.InputMismatchException
+6.IllegalStateException
+
+
+1)Arithmetic exception :
+ANS:It is a type of unchecked error in code that is thrown whenever there is a wrong mathematical or arithmetic
+ calculation in the code, especially during run time. For instance, when the denominator in a fraction is zero, 
+ the arithmetic exception is thrown.
+
+2)NullPointerException :
+ANS:It is a run time exception. It is thrown when a null value is assigned to a reference object and the program
+ tries to use that null object.
+
+3)ArrayIndexOutOfBoundsException :
+ANS:It occurs when we access an array with an invalid index. This means that either the index value is less than 
+zero or greater than that of the array’s length.
+
+NumberFormatException :
+It is a type of unchecked exception that occurs when we are trying to convert a string to an int or other numeric value. This exception is thrown in cases when it is not possible to convert a string to other numeric types.
+
+InputMismatchException :
+It occurs when an input provided by the user is incorrect. The type of incorrect input can be out of range or incorrect data type.
+
+IllegalStateException :
+It is a run time exception that occurs when a method of a code is triggered or invoked at the wrong time. This exception is used to give a signal that the method is invoked at the wrong time.
+
+Examples
+Example of Arithmetic Exception :
+---------------------------------
+public class EgArithemetic {
+
+  void divideInt(int n1, int n2) {
+    int res = n1 / n2;
+    System.out.println("Output: " + res);
+  }
+
+  public static void main(String argvs[]) {
+    // creating an object of the class ArithmeticException to call the function
+    ArithmeticException ae = new ArithmeticException();
+    ae.divideInt(1, 0);
+  }
+}
+
+Output :
+--------------------------------------------------------------------------------------
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at ArithmeticException.divide(ArithmeticException.java:6)
+	at ArithmeticException.main(ArithmeticException.java:16)
+--------------------------------------------------------------------------------------
+In this, when the number 1 is divided by 0, an exception is thrown at a run time.
+
+Example of NullPointerException
+public class Tester {
+
+  public static void main(String[] args) {
+    Object ref = null;
+    ref.toString(); // this will throw a NullPointerException
+  }
+}
+
+Output :
+------------------------------------------------------------------------------------
+java -cp /tmp/n0Xl19gobM Tester
+Exception in thread "main" java.lang.NullPointerException
+at Tester.main(Tester.java:4)
+-----------------------------------------------------------------------------------
+In this, the null pointer exception is thrown at a run time when the reference of the object is null.
+
+Example of ArrayIndexOutOfBoundsException
+public class EgAOOB {
+
+  public static void main(String[] args) {
+    String[] arr = { "A", "B", "C", "D" };
+
+    for (int i = 0; i <= arr.length; i++) {
+      System.out.println(arr[i]);
+    }
+  }
+}
+
+Output :
+-----------------------------------------------------------------------------------------------------------
+A
+B
+C
+D
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4
+	at EgAOOB.main(EgAOOB.java:7)
+---------------------------------------------------------------------------------------------------------
+In this, the for loop starts from 0 and ends at the length of the array which is 4 in this case. Because the index pointer 'i' is equal to the length of an array which is 5, it iterates 5 times in an array and prints the exception because several elements in an array are less than the length.
+
+Example of NumberFormatException
+public class Example {
+
+  public static void main(String[] args) {
+    int a = Integer.parseInt(null); //throws Exception as     //the input string is of illegal format for parsing as it is null.
+  }
+}
+
+Output :
+-------------------------------------------------------------------------------------
+Exception in thread "main" java.lang.NumberFormatException: Cannot parse null string
+	at java.base/java.lang.Integer.parseInt(Integer.java:630)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at Example.main(Example.java:4)
+-----------------------------------------------------------------------------------------
+In this, instead of a string, a null value is passed an exception occurs.
+
+Example of InputMismatchException
+import java.util.Scanner;
+
+public class InputEg {
+
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter name: ");
+    String name = sc.next();
+    System.out.println("Enter age: ");
+    int age = sc.nextInt();
+    System.out.println(name);
+    System.out.println(age);
+  }
+}
+
+Output :
+-----------------------------------------------------------------------------------------------------------------
+java -cp /tmp/V4mOs0Qj2l InputEg
+Enter name:
+titu
+Enter age:
+ten
+Exception in thread "main" java.util.InputMismatchExceptionat java.base/java.util.Scanner.throwFor(Scanner.java:939)
+at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+at InputEg.main(InputEg.java:8)
+-----------------------------------------------------------------------------------------------------------------
+In this example, instead of passing an int value for the age, the string value is passed. This caused an exception.
+
+Example of IllegalStateException
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class Example {
+
+  public static void main(String args[]) {
+    ArrayList<String> list = new ArrayList<String>();
+
+    list.add("apples");
+    list.add("mangoes");
+
+    ListIterator<String> it = list.listIterator();
+
+    it.remove();
+  }
+}
+
+Output :
+
+Exception in thread "main" java.lang.IllegalStateException
+   at java.util.ArrayList$Itr.remove(Unknown Source)
+   at MyPackage.NextElementExample.main(NextElementExample.java:17)
+
+When to Use Unchecked Exception in Java ?
+----------------------------------------
+If a developer does not want the error to be solved (considering it does not crash the system) then unchecked
+ exceptions should be used. It is used for caching the checked exception when it is unable to handle the error.
+
+Unchecked Exceptions — The Controversy
+----------------------------------------
+Java language does not require a specific method to catch or specify unchecked exceptions. Hence programmer might
+ write a code that throws only unchecked exceptions to make all other exception subclasses inherit the run time
+  exception.
+Both methods allow programmers to write code without even bothering about compiler errors or any other exceptions
+in the code.
+
+
+Checked and unchecked exception in java
+--------------------------------------------
+Conclusion
+Unchecked exception occurs at the time of execution also known as run time exceptions. It includes bugs, 
+improper usage of API, and syntax or logical error in programming.
+
+Types of Unchecked Exception :
+-------------------------------------------
+1.ArithmeticException
+2.NullPointerException
+3.ArrayIndexOutOfBoundsException
+4.NumberFormatException
+5.InputMismatchException
+6.IllegalStateException
+
+If a developer does not want the error to recover then unchecked exceptions should be used. It is used for 
+caching the checked exception when it is unable to handle the error.
+
+The conclusion is that if the user expects to recover from the exception in the code then checked exception 
+can be used else for any other cases, unchecked exceptions are a way to go.

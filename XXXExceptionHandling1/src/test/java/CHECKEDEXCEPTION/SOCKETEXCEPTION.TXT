@@ -1,0 +1,34 @@
+SocketException:
+====================================================================
+In Java, a SocketException is an exception that is thrown when an error occurs during socket-related operations.
+ It is a subclass of the IOException class and is typically thrown in network programming when there is an issue 
+ with network connectivity, communication, or socket operations. Here's an example of how to handle a 
+ SocketException:
+========================================================================================================
+import java.io.IOException;
+import java.net.Socket;
+import java.net.SocketException;
+
+public class SocketExceptionExample {
+    public static void main(String[] args) {
+        try {
+            Socket socket = new Socket("example.com", 8080);
+            // Perform socket operations
+            socket.close();
+        } catch (SocketException e) {
+            System.out.println("SocketException: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IOException: " + e.getMessage());
+        }
+    }
+}
+In this example, we are trying to establish a socket connection to the host "example.com" on port 8080 using
+ the Socket class. If a SocketException occurs, such as due to a network issue or connection problem, it will be
+  caught in the catch block.
+
+Inside the catch block, we handle the SocketException by printing an error message indicating the specific 
+exception message. Additionally, we have also included a catch block for the general IOException class to handle
+ other possible I/O-related exceptions that may occur during socket operations.
+
+By using the appropriate catch blocks, we can handle SocketException and other related exceptions and implement
+ necessary error handling or recovery logic in our network-related Java applications.

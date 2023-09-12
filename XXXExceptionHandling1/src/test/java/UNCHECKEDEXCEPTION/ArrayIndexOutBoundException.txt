@@ -1,0 +1,219 @@
+What is ArrayIndexOutOfBoundsException?
+====================================================================================================
+In Java, ArrayIndexOutOfBoundsException is an exception that occurs when we try to access an array element at
+ an index that is outside the bounds of the array. This means that the index being accessed is either negative
+ or greater than or equal to the size of the array. Let's discuss it in detail.
+ 
+ Before discussing more about array index out of exception in java, let's see what is index in an array. 
+ Index (plural: Indices) is nothing but the position of a memory block from the starting position of the array,
+  the thing to note here is that the index starts from 0 instead of 1. For example, if the size of an arbitrary 
+ array is n, then all its index lies in the range [0,n−1].Where the 0th index refers to the leftmost memory block 
+ (index at first position) and the (n−1)th index refers to the rightmost memory block (index at lat position).
+ 
+ Now let's again come back to array index out of bound exception, as the name out of bound suggests, whenever we try to access an array element whose index is out of bound of the array (not in the range) index we get the array index out of bound exception at the runtime.
+
+For example,
+=====================================================
+Let the array be arr=[1,2,3,4,5], when we try to access arr[2] we get 3 as output, when we try to access 
+arr[4] or arr[0] we get the result as 5 and 1 as the result respectively.
+
+But, when we try to access arr[5] or arr[−1] we get array index out of bound exception as 5 and −1 do not lie in 
+the array index bound i.e. [0,4]. More formally, whenever we try to access arr[x] such that arr.length
+x∉[0,arr.length−1], array index out of bound exception is thrown.
+
+Example of Array Index Out of Bound Exception
+=====================================================
+Array index out of bounds exception can only be found at the runtime (when the program gets executed). Therefore,
+ whenever we try to access the index out of the array bounds, the ArrayIndexOutOfBoundsException exception is 
+ thrown at the runtime, and the execution of the program gets terminated.
+
+Let's see how-
+================================================================================
+import java.util.*;
+// Main class
+public class Main{
+    
+    // Main function
+    public static void main (String[] args) {
+        // Defining the array.        
+        int arr[] = {1, 2, 3, 4, 5};
+        
+        // Priniting the array elements.
+        for (int i = 0; i <= arr.length; i++){
+            System.out.println("Element at index " + 
+                            i + " is " + arr[i]);
+        }
+    }   
+}
+
+Output:
+======================================================================================================
+Element at index 0 is 1
+Element at index 1 is 2
+Element at index 2 is 3
+Element at index 3 is 4
+Element at index 4 is 5
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+	at Main.main(Main.java:12)
+======================================================================================================	
+Here you can see the first 5 elements of the array get printed but when we tried to access the 6th element 
+(that do not exists) an Exception is thrown and the program got terminated.
+
+Now let's see how the List data structure reacts when we try to access an invalid element.
+=======================================================================================================
+import java.util.*;
+// Main class
+public class Main{
+    
+    // Main function
+    public static void main (String[] args) {
+        // Defining the list.        
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+
+        // Priniting the array elements.
+        for (int i = 0; i <= list.size(); i++){
+            System.out.println("Element at index " + 
+                            i + " is " + list.get(i));
+        }
+    }
+}
+
+Output:
+=======================================================================================================
+Element at index 0 is 1
+Element at index 1 is 2
+Element at index 2 is 3
+Element at index 3 is 4
+Element at index 4 is 5
+Exception in thread "main" java.lang.IndexOutOfBoundsException: Index 5 out of bounds for length 5
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:372)
+	at java.base/java.util.ArrayList.get(ArrayList.java:459)
+	at Main.main(Main.java:19)
+===========================================================================================================
+Note: Note that using list also fetched the error, because internally ArrayList is implemented using the array 
+data structure.
+
+How to Handle Array Index Out of Bound Exception?
+Why there is a need to handle this exception? Let's say you are playing an open world game, and you are trying
+ to go beyond the map of the game. Generally, while doing these things we get a notice that "This place does 
+ not exist" or "You are not permitted to go there" which is because the developer of the game handled the case 
+ of a player going outside the map bound. If the developer hadn't handled this exception it would have resulted
+  in the crashing of your game (which you will never want ). Therefore, it is very much necessary to handle all
+   the exceptions while building software.
+
+To handle this exception, we have two ways -
+
+Using For-each Loop (intutive way)
+One of the most intuitive and among the easiest ways is to use the modified for loop 
+
+i.e. for-each loop that iterates over the array and accesses only the valid indices of the array. Hence using
+ for-each loop can eliminate the chance of getting array index out of bound exception.
+
+Here is the example that shows how to handle array index out of bound exception in java using for-each loop -
+======================================================================================================
+import java.util.*;
+// Main class
+public class Main{
+    
+    // Main function
+    public static void main (String[] args) {
+        // Defining the array.        
+	int a[] = {1, 2, 3, 4, 5};
+      
+	int index = 0;
+        // Priniting the array elements.
+        for (int x : a){
+            System.out.println("Element at index " + 
+                            index + " is " + x);
+            index++;
+        }
+    }   
+}
+
+Output:
+=====================================================================================================
+Element at index 0 is 1
+Element at index 1 is 2
+Element at index 2 is 3
+Element at index 3 is 4
+Element at index 4 is 5
+
+Note: Note that for-each loop can also be used on the arrays of other data types and even with other 
+data structures like ArrayList, Queue, LinkedList, etc.
+=======================================================================================================
+Using Try Catch
+------------------
+In exception handling in java, we have seen how we can use the try-catch statements to catch exceptions without
+ terminating the program. Let's have a quick revision here, initially the statements written in the try block 
+ starts executing and whenever an exception is caught the program directly starts executing the statements 
+ written in the catch block.
+
+Therefore, whenever we try to access an invalid index the catch block will get executed and the corresponding 
+error message can be printed to the console or/and exception can be thrown for easier debugging.
+
+Here is the example that shows how to handle array index out of bound exception in java using try-catch -
+------------------------------------------------------------------------------------------------------
+import java.util.*;
+// Main class
+public class Main{
+    
+    // Main function
+    public static void main (String[] args) {
+        try{
+
+            // Definign the array
+            int arr[] = {1, 2, 3, 4, 5};
+
+            // Printing the array elements. 
+            for (int i = 0; i <= arr.length; i++){
+                System.out.println("Element at index "+
+                        i + " is " + arr[i]);
+            }
+
+        } catch (Exception e){
+            // Printing the error.
+            System.out.println("ERROR");
+            e.printStackTrace();
+        }
+        
+        // Remaining program
+        System.out.println("Other Statements");
+        /*
+         * .....................
+         * .....................
+         * .....................
+         * .....................
+        */
+    }
+}
+
+Output:
+-------------------------------------------------------------------------------------
+Element at index 0 is 1
+Element at index 1 is 2
+Element at index 2 is 3
+Element at index 3 is 4
+Element at index 4 is 5
+ERROR
+java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+	at Main.main(Main.java:14)
+Other Statements
+-----------------------------------------------------------------------------------------
+As you can see, firstly all the statements in the try block are executed until an exception is caught. And as 
+soon as any exception is caught, statements written inside the catch block get executed. Finally, the remaining
+ program (written outside the try-catch block) gets executed.
+
+Conclusion
+---------------------------------
+It is not valid to access array elements outside its index bounds. If one tries to do so, an ArrayIndexOutOfBoundsException is thrown.
+If one does not carefully handle the exception it may result in crashing the program and in some cases corrupting the data.
+Exceptions can be caught using the for-each loop or by using the try-catch block in the code.
