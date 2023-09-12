@@ -1,0 +1,62 @@
+Java this keyword
+------------------
+In Java, this is a keyword which is used to refer current object of a class. we can it to refer 
+any member of the class. It means we can access any instance variable and method by using
+ this keyword.
+
+The main purpose of using this keyword is to solve the confusion when we have same variable name
+-------------------------------------------------------------------------------------------------
+ for instance and local variables.
+ ----------------------------------
+ 
+We can use this keyword for the following purpose.
+
+this keyword is used to refer to current object.
+this is always a reference to the object on which method was invoked.
+this can be used to invoke current class constructor.
+this can be passed as an argument to another method.
+Lets first understand the most general use of this keyword. As we said, it can be used to 
+differentiate local and instance variables in the class.
+
+Example:
+---------
+In this example, we have three instance variables and a constructor that have three parameters
+ with same name as instance variables. Now, we will use this to assign values of parameters to 
+ instance variables.
+ 
+ Here this is used to initialize member of current object. Such as, this.width refers to the 
+ variable of the current object and width only refers to the parameter received in the constructor
+  i.e the argument passed while calling the constructor.
+
+Calling Constructor using this keyword
+---------------------------------------
+We can call a constructor from inside the another function by using this keyword
+
+Example:
+----------
+In this example, we are calling a parameterized constructor from the non-parameterized
+ constructor using the this keyword along with argument.
+ 
+ Accessing Method using this keyword
+---------------------------------------
+This is another use of this keyword that allows to access method. We can access method using
+ object reference too but if we want to use implicit object provided by Java then use 
+ this keyword.
+
+Example:
+----------
+In this example, we are accessing getName() method using this and it works fine as works with 
+object reference. See the below example
+
+Return Current Object from a Method
+---------------------------------------
+In such scenario, where we want to return current object from a method then we can use this to 
+solve this problem.
+
+Example:
+----------
+
+In this example, we created a method display that returns the object of Demo class. To return 
+the object, we used this keyword and stored the returned object into Demo type reference 
+variable. We used that returned object to call getName() method and it works fine.
+

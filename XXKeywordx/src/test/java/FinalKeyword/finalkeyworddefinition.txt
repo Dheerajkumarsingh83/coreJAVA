@@ -1,0 +1,16 @@
+The "final" keyword in Java is used to declare that a variable, method,
+ or class cannot be modified or overridden.
+ 
+ 
+Final Variable:
+----------------
+A final variable represents a constant value that cannot be changed once assigned.
+
+Final Method:
+----------------
+A final method in a class cannot be overridden by any subclass.
+
+Final Class:
+----------------
+A final class cannot be subclassed or extended by any other class.
+

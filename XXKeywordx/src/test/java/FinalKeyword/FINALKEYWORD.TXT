@@ -1,0 +1,266 @@
+Java Final Keyword
+--------------------
+
+The final keyword is used to put some restrictions on variables, methods, or classes in Java. If an entity is 
+marked as final, then we can't alter its properties in the future. It serves different purposes for different
+ entities.
+
+In this tutorial, we will learn how to use the final keyword in Java.
+
+Final Variables
+----------------
+1.If a variable has been marked final, then we cannot reassign a value to it.
+2.The variable will always have the same value with which it was initialized.
+3.We will get a compilation error if we try to make any modifications.
+4.Final variables are used to define a constant value in our program that should not be altered during the 
+program execution.
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		final int num = 10;
+		num = 500;//Compilation error
+	}
+}
+
+Exception in thread "main" java.lang.Error: Unresolved compilation problem:
+The final local variable num cannot be assigned. It must be blank and not using a compound assignment
+
+at Demo.main(Demo.java:6)
+
+If a final variable has been declared but not initialized, then it is called a Blank Final Variable.
+Static fields can also be made final. They must be initialized at the time of declaration or in a static block.
+ Class constants are always uppercase. An underscore is used to separate multiple words.
+ 
+final static double PI = 3.1415;//Declaring and Initializing a final static variable
+
+final static int BOILING_POINT;//Declaring
+static { BOILING_POINT = 100; }//Initializing in Static block
+
+Final Reference Variables
+--------------------------
+Just like a final primitive variable, a final reference variable cannot be reassigned after initialization.
+However, we can alter the properties or fields of the referenced object.
+For example, in the code below, we have created a final Student class reference variable. We cannot make the
+ reference variable point to a new object.
+
+class Student
+{
+	String name;
+	
+	Student(String s){
+		this.name= s;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		final Student student = new Student("Justin");
+		student = new Student("Jessica");//Error because of reassignment
+	}
+}
+
+Exception in thread "main" java.lang.Error: Unresolved compilation problem:
+The final local variable student cannot be assigned. It must be blank and not using a compound assignment
+
+at Demo.main(Demo.java:23)
+
+However, we can alter the name field of the object.
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		final Student s = new Student("Justin");
+		s.setName("Justin Greene");//Modifying final object properties is allowed
+		System.out.print("Name of Student: " + s.getName());
+	}
+}
+
+OUTPUT:
+-------
+Name of Student: Justin Greene
+
+Note that the above case is also applicable for arrays, as arrays are also stored as objects. This is 
+demonstrated by the code below.
+
+final int[] intArr = {1, 2, 3};
+intArr = new int[5]; //Error as reassignment is not allowed
+intArr[1] = 10; //Allowed
+Final Arguments or Parameters
+We cannot modify a final parameter inside the method body. We will get a compilation error.
+
+public class Demo
+{
+	public static void someMethod(final int num)
+	{
+		num = 10;//Error
+		//...
+	}
+	public static void main(String[] args)
+	{
+		someMethod(10);
+	}
+}
+
+OUTPUT:
+-------
+Exception in thread "main" java.lang.Error: Unresolved compilation problem:
+The final local variable num cannot be assigned. It must be blank and not using a compound assignment
+
+at Demo.someMethod(Demo.java:5)
+at Demo.main(Demo.java:10)
+
+Final Class
+------------
+If a class is marked final, then it cannot be inherited by any other class.
+A lot of core Java libraries contain final classes. The wrapper classes like Integer or Double are final. The 
+String class is also declared as final. This is done to avoid inheritance to keep the behavior of the class 
+predictable.
+
+The final keyword is also used to create immutable classes.
+------------------------------------------------------------
+Note that making a class final will not allow any other developer to extend or add features to it. We will lose 
+the extensibility and inheritability of that class.
+The following code shows a final class, and we will get a compilation error if ClassB tries to extend ClassA.
+
+final class ClassA{
+	int a;
+	
+	ClassA(int x){
+		this.a = x;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+}
+
+class ClassB extends ClassA//Error
+{
+	//...
+}
+Note that making a class final will not alter the mutability of the class members. We can still alter them.
+
+final class ClassA{
+	int a;
+	
+	ClassA(int x){
+		this.a = x;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+}
+
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		ClassA classA = new ClassA(10);
+		System.out.println("Before: " + classA.getA());
+		classA.setA(15);//Allowed
+		System.out.println("After: " + classA.getA());
+	}
+}
+
+OUTPUT:
+-------
+Before: 10
+After: 15
+
+Final Methods
+----------------
+1.We can also declare methods as final. A final method cannot be overridden.
+2.A lot of core java libraries use final methods. Methods like getClass(), notify(), notifyAll(), wait(), etc. are defined as final in the
+ Object class.
+3.Final methods are a good alternative to final classes when we only want to restrict the overriding of class methods.
+4.Even though every Java class extends the Object class, but no other class can override the above-mentioned final methods. This is done to
+ ensure the consistent behavior of objects.
+ 
+For example, in the code below, the subclass cannot override the final printA() method.
+
+class ClassA{
+	int a;
+	
+	ClassA(){
+		this.a = 100;
+	}
+
+	final void printA()
+	{
+		System.out.print("Class A or a Subclass of A");
+	}
+}
+
+class ClassB extends ClassA
+{
+	int b;
+	
+	ClassB(){
+		super.a = 150;
+		this.b = 200;
+	}
+	
+	@Override
+	void printA()//Error
+	{
+		System.out.print("Class B");
+	}
+}
+However, the final method is inherited by ClassB in the above code. We can use printA() method on an object of ClassB.
+
+class ClassA{
+	int a;
+	
+	ClassA(){
+		this.a = 100;
+	}
+
+	final void printA()
+	{
+		System.out.print("Class A or a Subclass of A");
+	}
+}
+
+class ClassB extends ClassA
+{
+	int b;
+	
+	ClassB(){
+		super.a = 150;
+		this.b = 200;
+	}
+}
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		ClassB classB = new ClassB();
+		classB.printA();
+	}
+}
+
+OUTPUT:
+-------
+Class A or a Subclass of A

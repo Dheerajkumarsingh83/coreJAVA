@@ -1,0 +1,99 @@
+Q #1) What is the difference between this and this () in Java?
+
+Answer: In Java, this refers to the current object while this () refers to the constructor with
+ matching parameters. The keyword ‘this’ works only with objects. The call “this ()’ is used to
+  call more than one constructor from the same class.
+
+Q #2) Is this keyword necessary in Java?
+
+Answer: It is necessary especially when you need to pass the current object from one method to 
+another, or between the constructors or simply use the current object for other operations.
+
+Q #3) What is the difference between this () and super () in Java?
+
+Answer: Both this () and super () are keywords in Java. While this () represents the constructor 
+of the current object with matching parameters, super () represents the constructor of the parent
+ class.
+
+Q #4) Can you use both this () and super () in a constructor?
+
+Answer: Yes, you can use it. The constructor this () will point to the current constructor while
+ super () will point to the parent class constructor. Remember that both this () and super () 
+ should be the first statement.
+ 
+ Java - Interview Questions and Answers on Java Keywords
+ --------------------------------------------------------
+ Q1.  What is a Final Variable ?
+
+Ans. Final variable is a variable constant that cannot be changed after initialization.
+
+Q2.  What is a final method ?
+
+Ans. Its a method which cannot be overridden. Compiler throws an error if we try to override a method which has been declared final in the parent class.
+
+Q3.  What is a Final Class ?
+
+Ans. A Class that cannot be sub classed.
+
+Q4.  What are the common uses of "this" keyword in java ?
+
+Ans. "this" keyword is a reference to the current object and can be used for following -
+
+1. Passing itself to another method.
+2. Referring to the instance variable when local variable has the same name.
+3. Calling another constructor in constructor chaining.
+
+Q5.  What are transient variables in java?
+
+Ans. Transient variables are variable that cannot be serialized.
+
+Q6.  Explain static blocks in Java ?
+
+Ans. A static initialization block is a normal block of code enclosed in braces, { }, and preceded by the static keyword. Here is an example:
+
+static {
+    // whatever code is needed for initialization goes here
+}
+
+A class can have any number of static initialization blocks, and they can appear anywhere in the class body. The runtime system guarantees that static initialization blocks are called in the order that they appear in the source code.
+
+Q7.  What is Volatile keyword used for ?
+
+Ans. Volatile is a declaration that a variable can be accessed by multiple threads and hence shouldn't be cached.
+
+Q8.  What is the use of Transient Keyword ?
+
+Ans. It in Java is used to indicate that a field should not be serialized.
+
+Q9.  Does Declaring an object "final" makes it immutable ?
+
+Ans. Only declaring primitive types as final makes them immutable. Making objects final means that the object handler cannot be used to target some other object but the object is still mutable.
+
+Q10.  Explain the use of "Native" keyword ?
+
+Ans. Used in method declarations to specify that the method is not implemented in the same Java source file, but rather in another language
+
+Q11.  What is "super" used for ?
+
+Ans. Used to access members of the base class.
+
+Q12.  What is "this" keyword used for ?
+
+Ans. Used to represent an instance of the class in which it appears.
+
+Q13.  What is "Import" used for ?
+
+Ans. Enables the programmer to abbreviate the names of classes defined in a package.
+
+Q14.  What is a Static import ?
+
+Ans. By static import , we can access the static members of a class directly without prefixing it with the class name.
+
+Q15.  Can we use both "this" and "super" in a constructor ?
+
+Ans. No, because both this and super should be the first statement.
+
+Q16.  Is it necessary that each try block to be followed by catch block ? 
+
+Ans. It should be followed by either catch or finally block.
+ 

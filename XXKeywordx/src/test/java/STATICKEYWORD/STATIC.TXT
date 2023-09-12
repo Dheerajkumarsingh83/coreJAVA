@@ -1,0 +1,4 @@
+STATIC keyword
+----------------
+The static keyword in a method declaration indicates that the method belongs to the class itself, rather 
+than to instances of the class. Static methods can be called without creating an object of the class.
